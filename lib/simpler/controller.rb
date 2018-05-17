@@ -50,10 +50,16 @@ module Simpler
       @request.params
     end
 
+    def status(value)
+      @response.status = value
+    end
+
     def render(template)
       set_header('Content-Type', 'text/plain') if template[:plain]
+      status(template[:status] || 200)
       @request.env['simpler.template'] = template
     end
+
 
   end
 end
