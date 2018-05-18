@@ -10,7 +10,7 @@ module Simpler
     end
 
     def render(binding)
-      return template[:plain] if template[:plain]
+      return template[:plain] if template && template[:plain]
       template = File.read(template_path)
 
       ERB.new(template).result(binding)

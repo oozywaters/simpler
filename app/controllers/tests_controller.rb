@@ -10,7 +10,7 @@ class TestsController < Simpler::Controller
   end
 
   def show
-    @parameters = params
+    @test_id = @parameters[:id]
   end
 
 end

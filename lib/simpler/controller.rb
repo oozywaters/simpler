@@ -11,9 +11,10 @@ module Simpler
       @response = Rack::Response.new
     end
 
-    def make_response(action)
+    def make_response(action, params)
       @request.env['simpler.controller'] = self
       @request.env['simpler.action'] = action
+      @parameters = params
 
       set_default_headers
       send(action)
