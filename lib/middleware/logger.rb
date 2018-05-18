@@ -3,7 +3,7 @@ require 'logger'
 class SimplerLogger
 
   def initialize(app)
-    @logger = Logger.new(Simpler.root.join('lib/log/app.log'))
+    @logger = Logger.new(Simpler.root.join('log/app.log'))
     @app = app
   end
 
@@ -19,6 +19,6 @@ class SimplerLogger
     "\nRequest: #{env['REQUEST_METHOD']} #{env['REQUEST_URI']}\n" \
     "Handler: #{env['simpler.controller'].class}##{env['simpler.action']}\n" \
     "Parameters: #{env['simpler.params']}\n" \
-    "Response: #{status} #{headers['Content-Type']} #{env['simpler.render_view']}\n" \
+    "Response: #{status} [#{headers['Content-Type']}] #{env['simpler.view']}\n" \
   end
 end

@@ -32,8 +32,10 @@ module Simpler
 
     def template_path
       path = template || [controller.name, action].join('/')
+      view = "#{path}.html.erb"
+      @env['simpler.view'] = view
 
-      Simpler.root.join(VIEW_BASE_PATH, "#{path}.html.erb")
+      Simpler.root.join(VIEW_BASE_PATH, view)
     end
 
   end
