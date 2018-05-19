@@ -40,7 +40,7 @@ module Simpler
       def add_params(parameter, value)
         parameter = parameter.split(':')[1].to_sym
 
-        @params[parameter] = value.to_i.zero? ? value : value.to_i
+        @params[parameter] = value =~ /^\d+$/ ? value.to_i : value
       end
 
       def path_parts(path)
