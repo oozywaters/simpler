@@ -45,7 +45,7 @@ module Simpler
     end
 
     def render_body
-      View.new(@request.env).render(binding)
+      View.new(@request.env, @render_type).render(binding)
     end
 
     def params
@@ -57,10 +57,22 @@ module Simpler
     end
 
     def render(template)
-      set_header('Content-Type', 'text/plain') if template[:plain]
-      @request.env['simpler.template'] = template
+      case
+      when template[:plain] then render_plain(template)
+      else render_html(template)
+      end
     end
 
+    def render_plain(template)
+      @render_type = 'plain'
+      set_header('Content-Type', 'text/plain')
+      @request.env['simpler.template'] = template[:plain]
+    end
+
+    def render_html(template)
+      @render_type = 'html'
+      @request.env['simpler.template'] = template
+    end
 
   end
 end
