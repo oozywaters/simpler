@@ -58,7 +58,6 @@ module Simpler
 
     def render(template)
       set_header('Content-Type', 'text/plain') if template[:plain]
-      status(template[:status] || 200)
       @request.env['simpler.template'] = template
     end
 
