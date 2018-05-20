@@ -11,7 +11,7 @@ class TestsController < Simpler::Controller
   end
 
   def show
-    @test_id = @parameters[:id]
+    @test_id = params[:id]
   end
 
 end
