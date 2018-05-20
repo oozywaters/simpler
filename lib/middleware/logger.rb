@@ -18,7 +18,7 @@ class SimplerLogger
   def log_info(env, status, headers)
     "\nRequest: #{env['REQUEST_METHOD']} #{env['REQUEST_URI']}\n" \
     "Handler: #{env['simpler.controller'].class}##{env['simpler.action']}\n" \
-    "Parameters: #{env['simpler.params']}\n" \
+    "Parameters: #{env['simpler.route.params']}\n" \
     "Response: #{status} [#{headers['Content-Type']}] #{env['simpler.view']}\n" \
   end
 end
